@@ -1,4 +1,4 @@
-Part 1: Refactoring Old code
+// Part 1: Refactoring Old code
 
 const csvString =
   `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26`;
@@ -11,12 +11,12 @@ let cell2 = '';
 let cell3 = '';
 let cell4 = '';
 
-let currentCell = 1;
+let columnCount = 1;
 
 for (let i = 0; i < csvString.length; i++) {
   //checking for new cell
   if (csvString[i] === ',') {
-    currentCell++;
+    columnCount++;
     continue;
   }
   // checking for a new row
@@ -25,11 +25,11 @@ for (let i = 0; i < csvString.length; i++) {
     cell2 = '';
     cell3 = '';
     cell4 = '';
-    currentCell = 1;
+    columnCount = 1;
     continue;
   }
 
-  switch (currentCell) {
+  switch (columnCount) {
     case 1:
       cell1 += csvString[i];
       break;
@@ -44,15 +44,15 @@ for (let i = 0; i < csvString.length; i++) {
       break;
 
     default:
-      console.log(`cell${currentCell} doesn't exist`);
+      console.log(`cell${columnCount} doesn't exist`);
       break;
   }
 
   if (
-    (currentCell === 4 && csvString[i + 1] === '\n') ||
+    (columnCount === 4 && csvString[i + 1] === '\n') ||
     i + 1 === csvString.length
   ) {
-    console.log(cell1, cell2, cell3, cell4);
+    
   }
 }
 
@@ -67,5 +67,19 @@ console.log(rows);
 let rowArray = [];
 
 for (i = 0; i < rows.length; i++) {
-    let cell = csvString.split(",");
+    let cell = rows[i].split(",");
+    rowArray[i] = cell;
 }
+console.log(rowArray)
+
+
+
+//Part 3: Transforming Data
+
+const firstRow = rows[0].split(',');
+const columnCount = firstRow.length;
+
+const dataArray = [];
+
+
+
