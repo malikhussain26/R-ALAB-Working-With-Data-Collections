@@ -114,9 +114,10 @@ console.log(dataArray);
 // Removing from array
 dataArray.pop();
 
-
+// inserting a new object at index 1
 dataArray.splice(1, 0, { id: "48", name: "Barry", occupation: "Runner", age: "25"});
 
+// adding an an object at the end
 dataArray.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
 
 
@@ -127,3 +128,15 @@ for(const person of dataArray) {
 const averageAge = totalAge / dataArray.length;
 
 console.log("Average Age:", averageAge);
+
+
+/** 
+ * 
+ * Part 5 - Full Circle
+ * 
+ */
+
+
+// reverting back to csv form
+const csvOutput = dataArray.map(person => Object.values(person).join(',')).join('\n');
+console.log(csvOutput);
