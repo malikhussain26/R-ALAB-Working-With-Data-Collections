@@ -1,5 +1,8 @@
-// Part 1: Refactoring Old code
-
+/**
+ * 
+ * Part 1: Refactoring Old code
+ * 
+ */
 const csvString =
   `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26`;
 
@@ -57,7 +60,11 @@ for (let i = 0; i < csvString.length; i++) {
 }
 
 
-// Part 2: Expanding Funcionality
+/**
+ * 
+ * Part 2: Expanding Funcionality
+ * 
+ */
 
 let rows = csvString.split('\n');
 console.log(rows);
@@ -74,7 +81,11 @@ console.log(rowArray)
 
 
 
-//Part 3: Transforming Data
+/**
+ * 
+ *  Part 3 - Transforming Data
+ * 
+ */
 
 const firstRow = rows[0].split(',');
 const columnCount = firstRow.length;
@@ -92,3 +103,27 @@ for (let i = 1; i < rows.length; i++) {
 
 console.log(dataArray);
 
+
+
+/**
+ * 
+ * Part 4 - Sorting and Manipulating Data
+ * 
+ */
+
+// Removing from array
+dataArray.pop();
+
+
+dataArray.splice(1, 0, { id: "48", name: "Barry", occupation: "Runner", age: "25"});
+
+dataArray.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+
+
+let totalAge = 0;
+for(const person of dataArray) {
+  totalAge += parseInt(person.age);
+}
+const averageAge = totalAge / dataArray.length;
+
+console.log("Average Age:", averageAge);
