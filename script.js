@@ -11,12 +11,12 @@ let cell2 = '';
 let cell3 = '';
 let cell4 = '';
 
-let columnCount = 1;
+let currentCell = 1;
 
 for (let i = 0; i < csvString.length; i++) {
   //checking for new cell
   if (csvString[i] === ',') {
-    columnCount++;
+    currentCell++;
     continue;
   }
   // checking for a new row
@@ -25,11 +25,11 @@ for (let i = 0; i < csvString.length; i++) {
     cell2 = '';
     cell3 = '';
     cell4 = '';
-    columnCount = 1;
+    currentCell = 1;
     continue;
   }
 
-  switch (columnCount) {
+  switch (currentCell) {
     case 1:
       cell1 += csvString[i];
       break;
@@ -44,12 +44,12 @@ for (let i = 0; i < csvString.length; i++) {
       break;
 
     default:
-      console.log(`cell${columnCount} doesn't exist`);
+      console.log(`cell${currentCell} doesn't exist`);
       break;
   }
 
   if (
-    (columnCount === 4 && csvString[i + 1] === '\n') ||
+    (currentCell === 4 && csvString[i + 1] === '\n') ||
     i + 1 === csvString.length
   ) {
     
@@ -81,5 +81,14 @@ const columnCount = firstRow.length;
 
 const dataArray = [];
 
+for (let i = 1; i < rows.length; i++) {
+  const rowData = rows[i].split(',');
+  const rowObject = {};
+  for (let j = 0; j < columnCount; j++) {
+    rowObject[firstRow[j]. toLowerCase()] = rowData[j];
+  }
+  dataArray.push(rowObject);
+}
 
+console.log(dataArray);
 
